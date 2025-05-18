@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.models.Patient;
+import com.example.demo.service.PatientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,15 +11,20 @@ import java.util.List;
 @RequestMapping("/api/v1/patients")
 public class PatientController {
 
+    @Autowired
+    private PatientService patientService;
+
     @GetMapping
     public List<Patient> getAllPatient(){
         System.out.println("Give all the patient");
+        System.out.println(patientService.getAllPatient());
         return null;
     }
 
     @PostMapping
     public Patient createPatient(@RequestBody Patient patient){
         System.out.println("Created a new patient");
+        System.out.println(patientService.createPatient(patient));
         return null;
     }
 
